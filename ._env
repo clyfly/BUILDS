@@ -1,15 +1,15 @@
 # Required: Device codename
-DEVICE="vince"
-ROM_NAME="RiceDroid"
+DEVICE="rosemary"
+ROM_NAME="cheris-os"
 
 # Required: git username
-GIT_NAME="ROMBUILDER"
+GIT_NAME="clyfly"
 # Required: git email
-GIT_EMAIL="rom-builder@rest.eu.org"
+GIT_EMAIL="denwahgenshin@gmail.com"
 
 # Required: Personal Access Token from GitHub with permissions repo, admin:repo_hook, user
 # Better set it as a secret in your GitHub repo settings
-# RELEASE_GITHUB_TOKEN="" 
+# RELEASE_GITHUB_TOKEN="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" 
 
 # Required: Repository owner/repo to upload and release build files
 GITHUB_RELEASE_REPO="rom-builder/$DEVICE-$ROM_NAME"
@@ -22,13 +22,28 @@ RELEASE_FILES_PATTERN="*.zip|*.md5sum|*.sha256sum"
 # {
 #     "repos": [
 #         {
-#             "repo": "https://github.com/owner/repo.git",
-#             "dir": "device/vendor/dir",
-#             "branch": "branch" # Optional
+#             "repo": "https://github.com/xiaomi-mt6785-dev/android_device_xiaomi_rosemary.git",
+#             "dir": "device/xiaomi/rosemary",
+#             "branch": "lineage-20" # Optional
 #         },
 #         {
-#             "repo": "https://gitlab.com/owner/repo.git",
-#             "dir": "device/vendor/dir"
+#             "repo": "https://github.com/xiaomi-mt6785-dev/proprietary_vendor_xiaomi_rosemary.git",
+#             "dir": "vendor/xiaomi/rosemary"
+#         },
+#         {
+#             "repo": "https://github.com/xiaomi-mt6785-dev/android_kernel_xiaomi_mt6785.git",
+#             "dir": "kernel/xiaomi/mt6785"
+#         },
+#         {
+#             "repo": "https://github.com/xiaomi-mt6785-dev/android_hardware_mediatek.git",
+#             "dir": "hardware/xiaomi/mediatek"
+#         },
+#         {
+#             "repo": "https://github.com/LineageOS/android_hardware_mediatek.git",
+#             "dir": "hardware/mediatek"
+#         },
+#             "repo": "https://github.com/chasbuilds/android_device_mediatek_sepolicy_vndr.git",
+#             "dir": "device/mediatek/sepolicy_vndr"
 #         },
 #     ]
 # }
@@ -38,10 +53,10 @@ REPOS_JSON="repos.json"
 RELEASE_OUT_DIR="out/target/product/$DEVICE"
 
 # Optional: If you have any pre command to run before setting up source
-# PRE_SETUP_SOURCE_COMMAND=""
+ PRE_SETUP_SOURCE_COMMAND="sudo apt install openjdk-8-jdk"
 
 # Required:
-SETUP_SOURCE_COMMAND=""
+SETUP_SOURCE_COMMAND="repo init -u https://github.com/CherishOS/android_manifest.git -b tiramisu"
 
 # Optional: If you have any post command to run after setting up source
 # POST_SETUP_SOURCE_COMMAND=""
@@ -50,7 +65,7 @@ SETUP_SOURCE_COMMAND=""
 # PRE_SYNC_SOURCE_COMMAND=""
 
 # Required:
-SYNC_SOURCE_COMMAND=""
+SYNC_SOURCE_COMMAND="repo sync -c -j$(nproc --all) --force-sync --no-clone-bundle --no-tags"
 
 # Optional: If you have any post command to run after syncing source
 # POST_SYNC_SOURCE_COMMAND=""
@@ -73,8 +88,8 @@ BUILD_GAPPS_COMMAND=""
 # LOG_OUTPUT=false
 
 # Optional: if you want updates in telegram
-# TG_TOKEN="" # Your bot token
-# TG_CHAT="" # Your chat id
+# TG_TOKEN="6092305092:AAF2sTLaF5AlPp8XlA2vPmHBGnbrmEyFDs0" # Your bot token
+# TG_CHAT="5602933977" # Your chat id
 
 # Optional: if you want to remove OTA Package
 REMOVE_OTA_PACKAGE=true
